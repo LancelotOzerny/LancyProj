@@ -11,14 +11,14 @@ $row->addClass('py-5');
 
 
 /* About me */
-$row = $page->grid->createRow();
-$row->containerIncluded = true;
+$container = $page->grid->createContainer();
+$row = $container->createRow();
 $row->addClass('py-5');
 
 
 /* Portfolio Works */
-$row = $page->grid->createRow();
-$row->containerIncluded = true;
+$container = $page->grid->createContainer();
+$row = $container->createRow();
 $row->addClass('py-5');
 
 

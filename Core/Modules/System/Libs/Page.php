@@ -21,7 +21,7 @@ class Page
         return self::$instance;
     }
 
-    public function build()
+    public function build() : void
     {
         $html = $this->grid->getHtml();
         echo $html;

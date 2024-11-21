@@ -7,4 +7,10 @@ class Column extends Selector
     {
 
     }
+
+    public function getHtml(): string
+    {
+        $html = '';
+        return $html;
+    }
 }

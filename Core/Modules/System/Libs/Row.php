@@ -3,7 +3,6 @@ namespace Core\Modules\System\Libs;
 
 class Row extends Selector
 {
-    public bool $containerIncluded = false;
     private array $columns = [];
 
     public function addColumn(Column $column)
@@ -26,14 +25,9 @@ class Row extends Selector
     public function getHtml() : string
     {
         $html = 'Row';
-        if ($this->containerIncluded)
-        {
-            $html = "<div class='container'>$html</div>";
-        }
 
         $this->addClass('row');
         $styles = $this->getClassAttr();
-
 
         return "<div $styles>$html</div>";;
     }

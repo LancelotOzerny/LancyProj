@@ -2,54 +2,33 @@
 namespace Core\Modules\System\Libs;
 
 use Core\Modules\System\Libs\Row;
+use Core\Modules\System\Libs\RowList;
 
-class Grid
+class Grid extends RowList
 {
-    private $rowList = [];
-    private Row | null $currentRow = null;
+    private array $gridElements = [];
 
-    public function createRow() : Row
+    public function createContainer() : Container
     {
-        $row = new Row();
-        $this->pushRowToList($row);
-        return $row;
+        $container = new Container();
+        $this->gridElements[] = $container;
+        return $container;
     }
 
-    public function addRow(Row $row) : void
+    public function pushRow(\Core\Modules\System\Libs\Row $row): void
     {
-        $this->pushRowToList($row);
-    }
-
-    private function pushRowToList(Row $row)
-    {
-        $this->rowList[] = $row;
-        $this->currentRow = $row;
-    }
-
-    public function getRowList() : array
-    {
-        return $this->rowList;
+        $this->gridElements[] = $row;
     }
 
     public function getHtml() : string
     {
         $gridHtml = '';
 
-        foreach ($this->rowList as $row)
+        foreach ($this->gridElements as $element)
         {
-            $gridHtml .= $row->getHtml();
+            $gridHtml .= $element->getHtml();
         }
 
         return $gridHtml;
-    }
-
-    public function getCurrentRow()
-    {
-        if (is_null($this->currentRow))
-        {
-            $this->currentRow = $this->createRow();
-        }
-
-        return $this->currentRow;
     }
 }

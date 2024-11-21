@@ -2,9 +2,14 @@
 
 namespace Core\Modules\System\Libs;
 
-class Selector
+abstract class Selector
 {
     private array $classList = [];
+
+    public function getClassList() : array
+    {
+        return $this->classList;
+    }
 
     public function addClass(string $class) : void
     {
@@ -16,4 +21,6 @@ class Selector
         $classes = join(' ', $this->classList);
         return "class='$classes'";
     }
+
+    public abstract function getHtml() : string;
 }
