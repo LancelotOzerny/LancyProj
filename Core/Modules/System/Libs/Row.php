@@ -1,7 +1,7 @@
 <?php
 namespace Core\Modules\System\Libs;
 
-class Row
+class Row extends Selector
 {
     public bool $containerIncluded = false;
     private array $columns = [];
@@ -31,6 +31,10 @@ class Row
             $html = "<div class='container'>$html</div>";
         }
 
-        return "<div class='row'>$html</div>";;
+        $this->addClass('row');
+        $styles = $this->getClassAttr();
+
+
+        return "<div $styles>$html</div>";;
     }
 }
