@@ -25,6 +25,8 @@ if (file_exists($pagePath = ROOT_DIR . "/Pages/$pagePath"))
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title><?= $page->getParam('title') ?></title>
+
+		<link rel="stylesheet" href="/assets/core/style.css">
     </head>
     <body>
 
