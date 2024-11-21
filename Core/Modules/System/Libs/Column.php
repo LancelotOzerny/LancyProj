@@ -10,7 +10,8 @@ class Column extends Selector
 
     public function getHtml(): string
     {
-        $html = '';
+        $styles = $this->getClassAttr();
+        $html = "<div $styles >Column</div>";
         return $html;
     }
 }

@@ -1,5 +1,21 @@
+$columns-count: 12;
+
 .container
 {
-	width: 1360px;
-	margin: 0 auto;
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.col
+{
+  width: auto;
+  display: inline-block;
+}
+@for $i from 1 through 12
+{
+  .col-#{$i}
+  {
+	width: calc(100% / 12 * $i);
+    display: inline-block;
+  }
 }

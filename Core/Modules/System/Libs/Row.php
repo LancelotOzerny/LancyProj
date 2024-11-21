@@ -5,11 +5,6 @@ class Row extends Selector
 {
     private array $columns = [];
 
-    public function addColumn(Column $column)
-    {
-        $this->columns[] = $column;
-    }
-
     public function createColumn(string $componentName = '', $columnParams = []) : Column
     {
         $column = new Column($componentName, $columnParams);
@@ -24,7 +19,12 @@ class Row extends Selector
 
     public function getHtml() : string
     {
-        $html = 'Row';
+        $html = '';
+
+        foreach ($this->columns as $column)
+        {
+            $html .= $column->getHtml();
+        }
 
         $this->addClass('row');
         $styles = $this->getClassAttr();
