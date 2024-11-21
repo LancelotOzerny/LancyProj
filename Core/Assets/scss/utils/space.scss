@@ -1,0 +1,50 @@
+$list: (margin: m, padding: p);
+
+@each $type, $appeal in $list
+{
+  @for $i from 1 through 10
+  {
+    .#{$appeal}-#{$i}
+    {
+      #{$type}: #{$i * 10}px;
+    }
+
+    .#{$appeal}l-#{$i}
+    {
+      #{$type}-left: #{$i * 10}px;
+    }
+
+    .#{$appeal}r-#{$i}
+    {
+      #{$type}-right: #{$i * 10}px;
+    }
+
+    .#{$appeal}t-#{$i}
+    {
+      #{$type}-top: #{$i * 10}px;
+    }
+
+    .#{$appeal}b-#{$i}
+    {
+      #{$type}-bottom: #{$i * 10}px;
+    }
+
+    .#{$appeal}x-#{$i}
+    {
+      #{$type}-left: #{$i * 10}px;
+      #{$type}-right: #{$i * 10}px;
+    }
+
+    .#{$appeal}y-#{$i}
+    {
+      #{$type}-top: #{$i * 10}px;
+      #{$type}-bottom: #{$i * 10}px;
+    }
+  }
+
+  .#{$appeal}x-auto
+  {
+    #{$type}-left: auto;
+    #{$type}-right: auto;
+  }
+}
