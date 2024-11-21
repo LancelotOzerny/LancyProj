@@ -6,7 +6,7 @@ $page->setParam('title', 'Сайт портфолио');
 
 /* HEADER */
 $row = $page->grid->createRow();
-$row->createColumn('Title', ['title' => 'test'])->addClass('col-12');;
+$row->createColumn('Title', ['content' => 'test'])->addClass('col-12');;
 $row->addClass('py-5');
 
 
@@ -14,10 +14,10 @@ $row->addClass('py-5');
 $container = $page->grid->createContainer();
 $row = $container->createRow();
 $row->addClass('py-5');
-$row->createColumn()->addClass('col-3');
-$row->createColumn()->addClass('col-3');;
-$row->createColumn()->addClass('col-3');;
-$row->createColumn()->addClass('col-3');;
+$row->createColumn('Title', ['content' => 'Title 1'])->addClass('col-3');
+$row->createColumn('Title', ['content' => 'Title 2'])->addClass('col-3');;
+$row->createColumn('Title', ['content' => 'Title 3'])->addClass('col-3');;
+$row->createColumn('Title', ['content' => 'Title 4'])->addClass('col-3');;
 
 
 /* Portfolio Works */

@@ -2,7 +2,7 @@
 /** @var array $componentParams */
 /** @var array $templateParams */
 
-$title = $templateParams['title'] ?? 'Empty Title';
+$title = $componentParams['content'] ?? 'Empty Title';
 ?>
 
 <h2><?= $title ?></h2>

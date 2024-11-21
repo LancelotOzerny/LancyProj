@@ -15,6 +15,7 @@ class Component
     public function execute() : void
     {
     	$templatePath = ROOT_DIR . "/Develop/Components/$this->name/template.php";
+
 		if (file_exists($templatePath))
         {
             $componentParams = $this->params;
