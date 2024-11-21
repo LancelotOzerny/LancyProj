@@ -24,7 +24,9 @@ class Page
     public function build() : void
     {
         $html = $this->grid->getHtml();
+        $this->includeHeader();
         echo $html;
+        $this->includeFooter();
     }
 
     private function init() : void
@@ -45,5 +47,38 @@ class Page
     public function getParamsList() : array
     {
         return $this->params;
+    }
+
+    public function inParamList(string $name)
+    {
+        return array_key_exists($name, $this->params);
+    }
+
+    public function includeHeader() : void
+    {
+        $template = $this->getParam('template') ?? 'Default';
+
+        if (file_exists($templatePath = ROOT_DIR . "/Develop/Templates/$template/header.php"))
+        {
+            include $templatePath;
+        }
+        else
+        {
+            echo "template $template is not contain header.php";
+        }
+    }
+
+    public function includeFooter() : void
+    {
+        $template = $this->getParam('template') ?? 'Default';
+
+        if (file_exists($templatePath = ROOT_DIR . "/Develop/Templates/$template/footer.php"))
+        {
+            include $templatePath;
+        }
+        else
+        {
+            echo "template $template is not contain footer.php";
+        }
     }
 }

@@ -17,25 +17,7 @@ if (file_exists($pagePath = ROOT_DIR . "/Pages/$pagePath"))
 {
     $page = \Core\Modules\System\Libs\Page::getInstance();
     include $pagePath;
-    ?>
-    <!doctype html>
-    <html lang="ru">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title><?= $page->getParam('title') ?></title>
-
-		<link rel="stylesheet" href="/assets/core/style.css">
-    </head>
-    <body>
-
-    <?php
     $page->build();
-    ?>
-    </body>
-    </html>
-    <?php
 }
 else
 {
