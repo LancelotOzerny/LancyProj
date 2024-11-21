@@ -1,3 +1,28 @@
 @import "utils/reset";
 
-@import 'grid/grid-1400';
+@import 'grid/grid';
+
+@media screen and (max-width: 1400px)
+{
+	@import 'grid/grid-1400';
+}
+
+@media screen and (max-width: 1080px)
+{
+	@import 'grid/grid-1080';
+}
+
+@media screen and (max-width: 720px)
+{
+	@import 'grid/grid-720';
+}
+
+@media screen and (max-width: 480px)
+{
+	@import 'grid/grid-480';
+}
+
+@media screen and (max-width: 320px)
+{
+	@import 'grid/grid-320';
+}
