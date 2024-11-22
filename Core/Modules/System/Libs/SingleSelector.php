@@ -2,9 +2,9 @@
 
 namespace Core\Modules\System\Libs;
 
-abstract class Selector
+abstract class SingleSelector
 {
-    private array $classList = [];
+    protected array $classList = [];
 
     public function getClassList() : array
     {

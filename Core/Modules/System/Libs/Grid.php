@@ -1,34 +1,27 @@
 <?php
 namespace Core\Modules\System\Libs;
 
+use Core\Modules\System\Libs\Container;
 use Core\Modules\System\Libs\Row;
-use Core\Modules\System\Libs\RowList;
 
-class Grid extends RowList
+class Grid extends DoubleSelector
 {
-    private array $gridElements = [];
+    public function createRow() : Row
+    {
+        $row = new Row();
+        $this->innerSelectorList[] = $row;
+        return $row;
+    }
 
     public function createContainer() : Container
     {
         $container = new Container();
-        $this->gridElements[] = $container;
+        $this->innerSelectorList[] = $container;
         return $container;
-    }
-
-    public function pushRow(\Core\Modules\System\Libs\Row $row): void
-    {
-        $this->gridElements[] = $row;
     }
 
     public function getHtml() : string
     {
-        $gridHtml = '';
-
-        foreach ($this->gridElements as $element)
-        {
-            $gridHtml .= $element->getHtml();
-        }
-
-        return $gridHtml;
+        return $this->getInnerCode();
     }
 }

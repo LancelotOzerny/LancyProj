@@ -3,7 +3,7 @@ namespace Core\Modules\System\Libs;
 
 use Core\Modules\System\Libs\Components\Component;
 
-class Column extends Selector
+class Column extends DoubleSelector
 {
     private Component | null $component = null;
 
@@ -14,8 +14,7 @@ class Column extends Selector
 
     public function getHtml(): string
     {
-        $styles = $this->getClassAttr();
-        $html = "<div $styles >";
+        $html = $this->getInnerCode();
         if ($this->component)
         {
             ob_start();
@@ -23,7 +22,9 @@ class Column extends Selector
             $html .= ob_get_contents();
             ob_clean();
         }
-        $html .= '</div>';
+
+        $styles = $this->getClassAttr();
+        $html = "<div $styles >$html</div>";
         return $html;
     }
 }

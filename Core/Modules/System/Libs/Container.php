@@ -2,27 +2,19 @@
 namespace Core\Modules\System\Libs;
 
 use Core\Modules\System\Libs\Row;
-use Core\Modules\System\Libs\RowList;
 
-class Container extends RowList
+class Container extends DoubleSelector
 {
-    private array $rowList = [];
-
-    public function pushRow(Row $row) : void
+    public function createRow() : Row
     {
-        $this->rowList[] = $row;
+        $row = new Row();
+        $this->innerSelectorList[] = $row;
+        return $row;
     }
 
     public function getHtml() : string
     {
-        $html = '';
-        foreach ($this->rowList as $row)
-        {
-            $html .= $row->getHtml();
-        }
-
-        $html = "<div class='container'>$html</div>";
-
-        return $html;
+        $html = $this->getInnerCode();
+        return "<div class='container'>$html</div>";
     }
 }

@@ -4,17 +4,19 @@ namespace Core\Modules\System\Libs\Components;
 class Component
 {
     private string $name = '';
+    private string $template = '';
     protected array $params = [];
 
     public function __construct(string $name, array $params = [])
     {
         $this->name = $name;
         $this->params = $params;
+        $this->template = $this->params['template'] ?? 'Default';
     }
 
     public function execute() : void
     {
-    	$templatePath = ROOT_DIR . "/Develop/Components/$this->name/template.php";
+    	$templatePath = ROOT_DIR . "/Develop/Components/$this->name/$this->template/template.php";
 
 		if (file_exists($templatePath))
         {
@@ -32,7 +34,7 @@ class Component
 
         if (file_exists($modelPath))
         {
-			$resultList = (new $modelClass())->getData();
+			$resultList = (new $modelClass())->getData($this->params);
         }
 
 		return $resultList;
