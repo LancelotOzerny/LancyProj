@@ -2,3 +2,12 @@
 {
 	width: 1040px;
 }
+
+@for $i from 1 through 12
+{
+  .col-lg-#{$i}
+  {
+	width: calc(100% / 12 * $i - 15px);
+	display: inline-block;
+  }
+}

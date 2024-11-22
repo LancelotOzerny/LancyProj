@@ -2,3 +2,13 @@
 {
 	width: 300px;
 }
+
+@for $i from 1 through 6
+{
+  .col-es-#{$i}
+  {
+	width: calc(100% / 6 * $i);
+	display: inline-block;
+	padding: 0 5px;
+  }
+}
