@@ -16,7 +16,7 @@ class Component extends SingleSelector
         $this->template = $this->params['template'] ?? 'Default';
     }
 
-    public function execute() : void
+    private function execute() : void
     {
     	$templatePath = ROOT_DIR . "/Develop/Components/$this->name/$this->template/template.php";
 
@@ -54,6 +54,8 @@ class Component extends SingleSelector
 
     public function getHtml(): string
     {
-        return 'Component';
+        ob_start();
+        $this->execute();
+        return ob_get_clean();
     }
 }
