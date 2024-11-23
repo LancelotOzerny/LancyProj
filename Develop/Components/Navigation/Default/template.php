@@ -3,14 +3,28 @@
 /** @var array $templateParams */
 
 $items = $templateParams['items'] ?? [];
+
+$logo_justify = $templateParams['logo']['src'] ? 'space-between' : 'flex-end';
+$logo_width = $templateParams['logo']['width'] ?? null;
+$logo_height = $templateParams['logo']['height'] ?? null;
 ?>
 
 <div class="navigation">
+	<?php if($templateParams['logo'] && $templateParams['logo']['src']): ?>
+	<a class="navbrand" href="#">
+		<img class="navbrand-image"
+			 <?= $logo_height ? "height='$logo_height'" : '' ?>
+			 <?= $logo_width ? "width='$logo_width'" : '' ?>
+			 src="<?= $templateParams['logo']['src'] ?>"
+			 alt="Lancy Studio">
+	</a>
+	<?php endif; ?>
+
 	<div class="row h-navbar py-2" style="gap: 10px;">
         <?php foreach ($items as $link): ?>
-			<div class="navbar-item <?= $link['active'] ? 'active' : '' ?>">
-				<a class="navbar-link px-2 py-1" href="<?= $link['href'] ?>"><?= $link['name'] ?></a>
-			</div>
+		<div class="navbar-item <?= $link['active'] ? 'active' : '' ?>">
+			<a class="navbar-link px-2 py-1" href="<?= $link['href'] ?>"><?= $link['name'] ?></a>
+		</div>
         <?php endforeach; ?>
 	</div>
 </div>
@@ -19,7 +33,14 @@ $items = $templateParams['items'] ?? [];
 	.navigation
 	{
 		display: flex;
-		justify-content: flex-end;
+		justify-content: <?= $logo_justify ?>;
+		align-items: center;
+	}
+
+	.navbrand
+	{
+		display: flex;
+		align-items: center;
 	}
 
 	.h-navbar
