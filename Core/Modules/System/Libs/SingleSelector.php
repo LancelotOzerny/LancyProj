@@ -11,9 +11,10 @@ abstract class SingleSelector
         return $this->classList;
     }
 
-    public function addClass(string $class) : void
+    public function addClass(string $class) : SingleSelector
     {
         $this->classList[] = $class;
+        return $this;
     }
 
     public function getClassAttr() : string
