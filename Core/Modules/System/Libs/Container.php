@@ -15,6 +15,6 @@ class Container extends DoubleSelector
     public function getHtml() : string
     {
         $html = $this->getInnerCode();
-        return "<div class='container'>$html</div>";
+        return "<div " . $this->getAttrStr() . "class='container'>$html</div>";
     }
 }
