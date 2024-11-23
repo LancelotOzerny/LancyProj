@@ -23,10 +23,7 @@ class Page
 
     public function build() : void
     {
-        $html = $this->grid->getHtml();
-        $this->includeHeader();
-        echo $html;
-        $this->includeFooter();
+        echo $this->grid->getHtml();
     }
 
     private function init() : void
