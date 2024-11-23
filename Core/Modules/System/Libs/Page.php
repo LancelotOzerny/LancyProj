@@ -21,9 +21,36 @@ class Page
         return self::$instance;
     }
 
+    private array $futureParams = [];
+
+    public function getFutureParam(string $name) : string
+    {
+        //  дальнейшем можно подобрать случайный хеш
+        return '{##' . mb_strtoupper($name) . '##}';
+    }
+
+    public function setFutureParam(string $name, string $value) : void
+    {
+        $this->futureParams[$name] = $value;
+    }
+
     public function build() : void
     {
-        echo $this->grid->getHtml();
+        $html = $this->grid->getHtml();
+
+        if ($this->futureParams)
+        {
+            $find = $replace = [];
+            foreach ($this->futureParams as $key => $value)
+            {
+                $find[] = '{##' . mb_strtoupper($key) . '##}';
+                $replace[] = $value;
+            }
+
+            $html = str_replace($find, $replace, $html);
+        }
+
+        echo $html;
     }
 
     private function init() : void

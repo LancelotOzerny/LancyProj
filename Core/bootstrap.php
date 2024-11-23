@@ -40,5 +40,9 @@ function buildPage(string $pagePath)
     include $pagePath;
     $page->includeFooter();
 
+    ob_start();
     $page->build();
+    $pageHtml = ob_get_clean();
+
+    echo $pageHtml;
 }

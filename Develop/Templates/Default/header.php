@@ -4,9 +4,8 @@
 use Core\Modules\System\Libs\Page;
 use Core\Modules\System\Libs\Selectors\HtmlCode;
 
-$title = $this->getParam('title');
-
 $page = Page::getInstance();
+
 $page->grid->addSelector(new HtmlCode(<<<"HTML"
 <!doctype html>
 <html lang="ru">
@@ -14,8 +13,8 @@ $page->grid->addSelector(new HtmlCode(<<<"HTML"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>$title</title>
-    
+    <title>{$page->getFutureParam('title')}</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -23,7 +22,8 @@ $page->grid->addSelector(new HtmlCode(<<<"HTML"
     <link rel="stylesheet" href="/assets/core/style.css">
     
     <style>
-        body {
+        body 
+        {
             font-family: "Inter", serif;
             font-optical-sizing: auto;
             font-weight: <weight>;
@@ -32,14 +32,21 @@ $page->grid->addSelector(new HtmlCode(<<<"HTML"
     </style>
 </head>
 <body>
+<?php
+    echo 'test';
+?>
 HTML));
 
 $row = $page->grid->createRow()
-->addClass('py-3')
-->addClass('px-5');
+->addClass('py-2')
+->addClass('px-5')
+->setAttr('style', 'box-shadow: 0 0 2px #222');
 
 $row->createColumn('Navigation', [
     'template' => 'Default',
+    'logo' => [
+        'src' => '/assets/sprites/logo.png',
+    ],
     'items' => [
         'Главная' => [ 'href' => '/' ],
         [
