@@ -13,7 +13,26 @@ if (str_ends_with($pagePath, '/'))
     $pagePath .= 'index.php';
 }
 
+/* ════════ Page Include ════════ */
 if (file_exists($pagePath = ROOT_DIR . '/Pages' . $pagePath))
+{
+    buildPage($pagePath);
+}
+else if (file_exists($pagePath = ROOT_DIR . '/Pages/404.php'))
+{
+    buildPage($pagePath);
+}
+else
+{
+    echo '<p>Page 404</p>';
+}
+
+
+
+//  ═════════════════════════
+//  FUNCTIONS
+//  ═════════════════════════
+function buildPage(string $pagePath)
 {
     $page = \Core\Modules\System\Libs\Page::getInstance();
 
@@ -22,8 +41,4 @@ if (file_exists($pagePath = ROOT_DIR . '/Pages' . $pagePath))
     $page->includeFooter();
 
     $page->build();
-}
-else
-{
-    echo '<p>Page 404</p>';
 }
