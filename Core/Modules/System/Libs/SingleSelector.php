@@ -33,13 +33,13 @@ abstract class SingleSelector
         return $this;
     }
 
-    public function getClassAttr() : string
+    public function getClassesStr() : string
     {
         $classes = join(' ', $this->classList);
         return "class='$classes'";
     }
 
-    public function setAttr(string $name, string $value) : Row
+    public function setAttr(string $name, string $value) : SingleSelector
     {
         $this->attrList[$name] = $value;
 

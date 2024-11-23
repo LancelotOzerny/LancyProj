@@ -30,18 +30,24 @@ $page->grid->addSelector(new HtmlCode(<<<"HTML"
             font-weight: <weight>;
             font-style: normal;
         }
+        
+        .main-header
+        {
+            min-height: 100vh;
+            background-image: url(/assets/images/background/main.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
-<?php
-    echo 'test';
-?>
 HTML));
 
 $row = $page->grid->createRow()
 ->addClass('py-2')
 ->addClass('px-5')
-->setAttr('style', 'box-shadow: 0 0 2px #222');
+->setAttr('style', 'position: fixed; width: 100%;');
 
 $row->createColumn()->addClass('col-12')->addSelector(new Component('Navigation', [
     'template' => 'Default',

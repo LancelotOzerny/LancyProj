@@ -8,7 +8,7 @@ class Column extends DoubleSelector
     public function getHtml(): string
     {
         $html = $this->getInnerCode();
-        $styles = $this->getClassAttr();
+        $styles = $this->getClassesStr();
         return "<div $styles>$html</div>";
     }
 }

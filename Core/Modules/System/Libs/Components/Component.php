@@ -56,6 +56,11 @@ class Component extends SingleSelector
     {
         ob_start();
         $this->execute();
-        return ob_get_clean();
+        $inner = ob_get_clean();
+
+        $attr = $this->getAttrStr();
+        $classes = $this->getClassesStr();
+
+        return "<div $attr $classes>$inner</div>";
     }
 }

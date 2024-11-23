@@ -15,7 +15,7 @@ class Row extends DoubleSelector
         $html = $this->getInnerCode();
 
         $this->addClass('row');
-        $styles = $this->getClassAttr();
+        $styles = $this->getClassesStr();
 
         return "<div " . $this->getAttrStr() . "$styles>$html</div>";
     }
