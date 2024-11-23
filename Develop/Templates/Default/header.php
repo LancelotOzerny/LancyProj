@@ -15,9 +15,21 @@ $page->grid->addSelector(new HtmlCode(<<<"HTML"
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>$title</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/core/style.css">
-    <link rel="stylesheet" href="/test.php">
+    
+    <style>
+        body {
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+    </style>
 </head>
 <body>
 HTML));
