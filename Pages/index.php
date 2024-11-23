@@ -1,12 +1,14 @@
 <?php
 /** @var \Core\Modules\System\Libs\Page $page */
 
+use Core\Modules\System\Libs\Components\Component;
+
 $page->setFutureParam('title', 'Сайт портфолио');
 
 
 /* HEADER */
 $row = $page->grid->createRow();
-$row->createColumn('Title', ['content' => 'test'])->addClass('col-12');;
+$row->createColumn()->addClass('col-12')->addSelector(new Component('Title', ['content' => 'test']));
 $row->addClass('py-5');
 
 
@@ -14,10 +16,10 @@ $row->addClass('py-5');
 $container = $page->grid->createContainer();
 $row = $container->createRow();
 $row->addClass('py-5');
-$row->createColumn('Title', ['content' => 'Title 1'])->addClass('col-3');
-$row->createColumn('Title', ['content' => 'Title 2'])->addClass('col-3');;
-$row->createColumn('Title', ['content' => 'Title 3'])->addClass('col-3');;
-$row->createColumn('Title', ['content' => 'Title 4'])->addClass('col-3');;
+$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 1']));
+$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 2']));
+$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 3']));
+$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 4']));
 
 
 /* Portfolio Works */

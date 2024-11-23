@@ -3,6 +3,7 @@
 
 use Core\Modules\System\Libs\Page;
 use Core\Modules\System\Libs\Selectors\HtmlCode;
+use Core\Modules\System\Libs\Components\Component;
 
 $page = Page::getInstance();
 
@@ -42,7 +43,7 @@ $row = $page->grid->createRow()
 ->addClass('px-5')
 ->setAttr('style', 'box-shadow: 0 0 2px #222');
 
-$row->createColumn('Navigation', [
+$row->createColumn()->addClass('col-12')->addSelector(new Component('Navigation', [
     'template' => 'Default',
     'logo' => [
         'src' => '/assets/sprites/logo.png',
@@ -56,4 +57,4 @@ $row->createColumn('Navigation', [
         'Портфолио' => [ 'href' => '/portfolio/' ],
         'Контакты' => [ 'href' => '/contacts/' ],
     ]
-])->addClass('col-12');
+]));

@@ -1,7 +1,9 @@
 <?php
 namespace Core\Modules\System\Libs\Components;
 
-class Component
+use Core\Modules\System\Libs\SingleSelector;
+
+class Component extends SingleSelector
 {
     private string $name = '';
     private string $template = '';
@@ -48,5 +50,10 @@ class Component
     public function getParams() : array
     {
         return $this->params;
+    }
+
+    public function getHtml(): string
+    {
+        return 'Component';
     }
 }
