@@ -2,35 +2,75 @@
 /** @var \Core\Modules\System\Libs\Page $page */
 
 use Core\Modules\System\Libs\Components\Component;
+use Core\Modules\HtmlCreator\Libs\Grid\Container;
+use Core\Modules\HtmlCreator\Libs\Main\HtmlCode;
 
 $page->setFutureParam('title', 'Сайт портфолио');
 
+//  ═════════════════════════
+//  HEADER
+//  ═════════════════════════
+$row = $page->grid->createRow()
+    ->addClass('v-100 main-header py-10')
+    ->addInnerElement($container = new Container());
 
-/* HEADER */
-$row = $page->grid->createRow();
-$row->createColumn()->addClass('col-12')->addSelector(new Component('Title', ['content' => 'test']));
-$row->addClass('py-5');
+$row = $container->createRow()
+    ->setAttr('style', [
+        'height: 100%;',
+        'align-items: center;',
+        'justify-content: center;',
+    ]);
+
+$col = $row->createColumn()
+    ->addClass('col-5')
+    ->setAttr('style', [
+        'display: grid;',
+        'color: #fff;',
+        'text-shadow: 0 0 2px #000; gap: 15px;',
+    ])
+    ->addInnerElement(new Component('Title', ['content' => 'Lancy Studio']))
+    ->addInnerElement(new HtmlCode(<<<'HTML'
+    <p class="my-1">Web разработка, создание игр, дизайн</p>
+    HTML));
+
+$col = $row->createColumn()
+    ->addClass('col-5')
+    ->setAttr('style', [
+        'display: grid;',
+        'color: #fff;',
+        'text-shadow: 0 0 2px #000; gap: 15px;',
+    ])
+
+    ->addInnerElement(new Component('Title', ['content' => 'WEB-разработка', 'level' => 3]))
+    ->addInnerElement(new HtmlCode(<<<'HTML'
+        <p class="mb-3">Сайтов на Frontend языках HTML5, CSS3 (SCSS), JavaScript (TypeScript), серверном языке PHP и фреймворке 1C bitrix</p> 
+    HTML))
+
+    ->addInnerElement(new Component('Title', ['content' => 'Gamedev', 'level' => 3]))
+    ->addInnerElement(new HtmlCode(<<<'HTML'
+        <p class="mb-3">Разработка Desktop и мобильных 2D видеоигр различных жанров на игровом движке Unity и языке программирования C#</p> 
+    HTML))
+
+    ->addInnerElement(new Component('Title', ['content' => 'Дизайн', 'level' => 3]))
+    ->addInnerElement(new HtmlCode(<<<'HTML'
+    <p>От простых Landing Page до многостраничных сайтов</p>
+    HTML));
 
 
-/* About me */
-$container = $page->grid->createContainer();
-$row = $container->createRow();
-$row->addClass('py-5');
-$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 1']));
-$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 2']));
-$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 3']));
-$row->createColumn()->addClass('col-3')->addSelector(new Component('Title', ['content' => 'Title 4']));
+//  ═════════════════════════
+//  ABOUT ME
+//  ═════════════════════════
+$container = \Core\Modules\System\Libs\Page::getInstance()->grid->createContainer()
+    ->setAttr('style', [
+        'display: grid;',
+        'grid-template-rows: 200px 1fr;',
+    ])
+    ->addClass('py-10');
 
-
-/* Portfolio Works */
-$container = $page->grid->createContainer();
-$row = $container->createRow();
-$row->addClass('py-5');
-
-/* FOOTER */
-$row = $page->grid->createRow();
-$row->addClass('py-5');
-$row->createColumn()->addClass('col-3');
-$row->createColumn()->addClass('col-3');
-$row->createColumn()->addClass('col-3');
-$row->createColumn()->addClass('col-3');
+$container->createRow()
+    ->createColumn()
+    ->addClass('col-6')
+    ->addInnerElement(new Component('Title', [
+        'template' => 'Side',
+        'content' => 'О себе в двух словах',
+    ]));

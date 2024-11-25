@@ -2,12 +2,13 @@
 /** @param \Core\Modules\System\Libs\Page $this */
 
 use Core\Modules\System\Libs\Page;
-use Core\Modules\System\Libs\Selectors\HtmlCode;
+use Core\Modules\HtmlCreator\Libs\Main\HtmlCode;
+use Core\Modules\HtmlCreator\Libs\Main\Text;
 use Core\Modules\System\Libs\Components\Component;
 
 $page = Page::getInstance();
 
-$page->grid->addSelector(new HtmlCode(<<<"HTML"
+$page->grid->addNewElement(new HtmlCode(<<<"HTML"
 <!doctype html>
 <html lang="ru">
 <head>
@@ -23,12 +24,15 @@ $page->grid->addSelector(new HtmlCode(<<<"HTML"
     <link rel="stylesheet" href="/assets/core/style.css">
     
     <style>
+        html
+        {
+            font-size: 18px;
+        }
+    
         body 
         {
             font-family: "Inter", serif;
-            font-optical-sizing: auto;
-            font-weight: <weight>;
-            font-style: normal;
+            line-height: 150%;
         }
         
         .main-header
@@ -47,9 +51,12 @@ HTML));
 $row = $page->grid->createRow()
 ->addClass('py-2')
 ->addClass('px-5')
-->setAttr('style', 'position: fixed; width: 100%;');
+->setAttr('style', [
+    'position: fixed;',
+    'width: 100%;'
+]);
 
-$row->createColumn()->addClass('col-12')->addSelector(new Component('Navigation', [
+$row->createColumn()->addClass('col-12')->addInnerElement(new Component('Navigation', [
     'template' => 'Default',
     'logo' => [
         'src' => '/assets/sprites/logo.png',
