@@ -3,6 +3,7 @@
 /** @var array $templateParams */
 
 $title = $componentParams['content'] ?? 'Empty Title';
+$level = $componentParams['level'] ?? '1';
 ?>
 
-<h2><?= $title ?></h2>
+<h<?= $level ?> class="page-title"><?= $title ?></h<?= $level ?>>
