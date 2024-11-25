@@ -1,26 +1,13 @@
 <?php
 namespace Core\Modules\System\Libs;
 
-use Core\Modules\System\Libs\Grid;
+use Core\Modules\HtmlCreator\Libs\Grid\Grid;
+use Core\Modules\Patterns\Libs\Singletoon;
 
-class Page
+class Page extends Singletoon
 {
-    private array $params = [];
-    private static null | self $instance = null;
-    private function __construct() {}
+    protected array $params = [];
     public readonly Grid | null $grid;
-
-    public static function getInstance() : self
-    {
-        if (is_null(self::$instance))
-        {
-            self::$instance = new static();
-            self::$instance->init();
-        }
-
-        return self::$instance;
-    }
-
     private array $futureParams = [];
 
     public function getFutureParam(string $name) : string
@@ -53,6 +40,12 @@ class Page
         echo $html;
     }
 
+    protected function __construct()
+    {
+        $this->init();
+        parent::__construct();
+    }
+
     private function init() : void
     {
         $this->grid = new Grid();
@@ -73,7 +66,7 @@ class Page
         return $this->params;
     }
 
-    public function inParamList(string $name)
+    public function inParamList(string $name) : bool
     {
         return array_key_exists($name, $this->params);
     }
