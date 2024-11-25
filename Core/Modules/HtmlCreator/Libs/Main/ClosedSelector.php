@@ -14,7 +14,7 @@ class ClosedSelector extends Selector
         }
 
         $attrLine = $this->getAttrLine();
-        $html = "<$this->selector $attrLine>$content<$this->selector>";
+        $html = "<$this->selector $attrLine>$content</$this->selector>";
         return $html;
     }
 

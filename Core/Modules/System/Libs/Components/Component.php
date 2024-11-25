@@ -1,9 +1,9 @@
 <?php
 namespace Core\Modules\System\Libs\Components;
 
-use Core\Modules\System\Libs\SingleSelector;
+use Core\Modules\HtmlCreator\Libs\Main\IGetHtml;
 
-class Component extends SingleSelector
+class Component implements IGetHtml
 {
     private string $name = '';
     private string $template = '';
@@ -56,11 +56,6 @@ class Component extends SingleSelector
     {
         ob_start();
         $this->execute();
-        $inner = ob_get_clean();
-
-        $attr = $this->getAttrStr();
-        $classes = $this->getClassesStr();
-
-        return "<div $attr $classes>$inner</div>";
+        return ob_get_clean();
     }
 }
