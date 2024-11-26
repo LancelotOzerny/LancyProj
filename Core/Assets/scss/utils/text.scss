@@ -1,0 +1,16 @@
+.text
+{
+  &-white
+  {
+	color: #fff;
+  }
+
+  &-dark-shadow { text-shadow: 0 0 2px #222; }
+  &-light-shadow { text-shadow: 0 0 2px #fff; }
+
+
+  &-center { text-align: center; }
+  &-justify { text-align: justify; }
+  &-left { text-align: left; }
+  &-right { text-align: right; }
+}
