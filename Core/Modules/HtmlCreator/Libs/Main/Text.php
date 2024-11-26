@@ -12,6 +12,7 @@ class Text implements IGetHtml
 
     public function getHtml(): string
     {
-        return htmlspecialchars($this->text);
+        $text = htmlspecialchars($this->text);
+        return "<p>$text</p>";
     }
 }
