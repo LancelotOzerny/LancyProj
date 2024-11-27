@@ -31,12 +31,16 @@ class Component implements IGetHtml
 	private function getData() : array
     {
         $resultList = [];
-        $modelClass = "\\Develop\\Components\\$this->name\\Model";
-        $modelPath = ROOT_DIR . "/Develop/Components/{$this->name}/Model.php";
 
-        if (file_exists($modelPath))
+        if (file_exists(ROOT_DIR . "/Develop/Components/{$this->name}/Model.php"))
         {
+            $modelClass = "\\Develop\\Components\\$this->name\\Model";
 			$resultList = (new $modelClass())->getData($this->params);
+        }
+        else if (file_exists(ROOT_DIR . "/Develop/Components/{$this->name}/{$this->template}/Model.php"))
+        {
+            $modelClass = "\\Develop\\Components\\{$this->name}\\{$this->template}\\Model";
+            $resultList = (new $modelClass())->getData($this->params);
         }
 
 		return $resultList;
